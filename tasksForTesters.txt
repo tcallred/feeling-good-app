@@ -1,0 +1,2 @@
+Create a new thought and save it.
+Read an existing thought and respond to it. Save that response.
