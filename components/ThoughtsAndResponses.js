@@ -29,7 +29,7 @@ export default class ThoughtsAndResponses {
     }
 
     addEntry(datetime, text) {
-        this._list.push({id: getId(), datetime: datetime, thought: text, response: null});
+        this._list.push({id: getId(), datetime: datetime, thought: text, response: ''});
     }
 
     removeEntry(id) {
@@ -42,6 +42,18 @@ export default class ThoughtsAndResponses {
         this._list.find(el => {
             return el.id === id
         }).response = resp;
+    }
+
+    getThoughtText(id){
+        return this._list.find(el =>{
+            return el.id === id
+        }).thought;
+    }
+
+    getResponseText(id){
+        return this._list.find(el =>{
+            return el.id === id
+        }).response;
     }
 
     getList(){

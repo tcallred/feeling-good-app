@@ -5,6 +5,7 @@ import {AppLoading, Asset, Font, Icon} from 'expo';
 import HomeScreen from "./screens/HomeScreen";
 import ThoughtScreen from "./screens/ThoughtScreen";
 import ThoughtsAndResponses from "./components/ThoughtsAndResponses"
+import ResponseScreen from "./screens/ResponseScreen";
 
 
 export default class App extends React.Component {
@@ -70,6 +71,7 @@ const RootStack = createStackNavigator(
     {
         Home: HomeScreen,
         Thought: ThoughtScreen,
+        Response: ResponseScreen
     },
     {
         initialRouteName: 'Home',

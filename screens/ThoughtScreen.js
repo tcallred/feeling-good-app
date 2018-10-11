@@ -17,13 +17,21 @@ export default class ThoughtScreen extends React.Component {
 
     render() {
         return (
-            <View>
-                <TextInput style={styles.textBox} onChangeText={(text) => {
-                    this.setState({text})
-                }} value={this.state.text}/>
+            <View style={{padding: 15}}>
+                <TextInput
+                    style={styles.textBox}
+                    onChangeText={(text) => {
+                        this.setState({text})
+                    }}
+                    value={this.state.text}
+                    multiline={true}
+                    numberOfLines={1000}
+                />
                 <Button title='Save' onPress={() => {
                     let tr = ThoughtsAndResponses.getInstance();
-                    tr.addEntry('Just now', this.state.text)}
+                    tr.addEntry('Just now', this.state.text);
+                    this.props.navigation.goBack();
+                }
                 }/>
             </View>
         )
@@ -35,6 +43,7 @@ const styles = StyleSheet.create({
     textBox: {
         backgroundColor: 'white',
         height: 200,
-        width: 100
+        width: '100%',
+        borderRadius: 10
     }
 });
