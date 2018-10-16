@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
 
-export default class ThoughtScreen extends React.Component {
+export default class ResponseScreen extends React.Component {
 
     constructor(props) {
         super(props);
