@@ -1,6 +1,6 @@
 import React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 import {AppLoading, Asset, Font, Icon} from 'expo';
 import HomeScreen from "./screens/HomeScreen";
 import ThoughtScreen from "./screens/ThoughtScreen";
@@ -31,7 +31,7 @@ export default class App extends React.Component {
                 />
             );
         } else {
-            return <RootStack/>
+            return <RootSwitch/>
             // return (
             //     <View style={styles.container}>
             //         <StatusBar hidden={true}/>
@@ -67,7 +67,7 @@ export default class App extends React.Component {
         this.setState({isLoadingComplete: true});
     };
 }
-const RootStack = createStackNavigator(
+const RootSwitch = createSwitchNavigator(
     {
         Home: HomeScreen,
         Thought: ThoughtScreen,

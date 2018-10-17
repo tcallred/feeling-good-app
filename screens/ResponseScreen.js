@@ -9,6 +9,7 @@ import {
     Alert
 } from 'react-native';
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
+import NavBar from "../components/NavBar";
 
 export default class ResponseScreen extends React.Component {
 
@@ -24,39 +25,50 @@ export default class ResponseScreen extends React.Component {
     render() {
         let tr = ThoughtsAndResponses.getInstance();
         return (
-            <ScrollView style={{padding: 15}}>
-                <View style={styles.textShow}>
-                    <Text>
-                        {tr.getThoughtText(this.state.id)}
-                    </Text>
-                </View>
-                <TextInput
-                    style={styles.textBox}
-                    onChangeText={(text) => {
-                        this.setState({text})
+            <View>
+                <NavBar
+                    leftTitle='Save'
+                    leftButtonPress={() => {
+                        tr.setResponse(this.state.id, this.state.text);
+                        this.props.navigation.navigate('Home');
                     }}
-                    value={this.state.text}
-                    multiline={true}
-                    numberOfLines={1000}
-                />
-                <Button title='Save' onPress={() => {
-                    tr.setResponse(this.state.id, this.state.text);
-                    this.props.navigation.goBack();
-                }}/>
-                <Button title='Finish' onPress={() => {
-                    Alert.alert(
-                        'Finished?',
-                        'Are you satisfied with this thought?',
-                        [
-                            {text: 'Yes', onPress: () => {tr.removeEntry(this.state.id); this.props.navigation.goBack();}},
-                            {text: 'Not yet', onPress: () => {}}
-                        ]
-                    )
+                    rightTitle='Finish'
+                    rightButtonPress={() => {
+                        Alert.alert(
+                            'Finished?',
+                            'Are you satisfied with this thought?',
+                            [
+                                {
+                                    text: 'Yes', onPress: () => {
+                                        tr.removeEntry(this.state.id);
+                                        this.props.navigation.navigate('Home');
+                                    }
+                                },
+                                {
+                                    text: 'Not yet', onPress: () => {}
+                                }
+                            ]
+                        )
 
-                }}/>
-                <View style={{height: 800, width: '100%'}}/>
-            </ScrollView>
-
+                    }}/>
+                <ScrollView style={{padding: 15}}>
+                    <View style={styles.textShow}>
+                        <Text>
+                            {tr.getThoughtText(this.state.id)}
+                        </Text>
+                    </View>
+                    <TextInput
+                        style={styles.textBox}
+                        onChangeText={(text) => {
+                            this.setState({text})
+                        }}
+                        value={this.state.text}
+                        multiline={true}
+                        numberOfLines={1000}
+                    />
+                    <View style={{height: 800, width: '100%'}}/>
+                </ScrollView>
+            </View>
         )
     }
 }
