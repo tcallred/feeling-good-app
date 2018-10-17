@@ -6,7 +6,8 @@ import {
     StyleSheet,
     Text,
     ScrollView,
-    Alert
+    Alert,
+    TouchableHighlight
 } from 'react-native';
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
 import NavBar from "../components/NavBar";
@@ -51,23 +52,29 @@ export default class ResponseScreen extends React.Component {
                         )
 
                     }}/>
-                <ScrollView style={{padding: 15}}>
+
+                <View style={{padding: 15, flex: 1}}>
                     <View style={styles.textShow}>
                         <Text>
                             {tr.getThoughtText(this.state.id)}
                         </Text>
                     </View>
-                    <TextInput
-                        style={styles.textBox}
-                        onChangeText={(text) => {
-                            this.setState({text})
-                        }}
-                        value={this.state.text}
-                        multiline={true}
-                        numberOfLines={1000}
-                    />
-                    <View style={{height: 800, width: '100%'}}/>
-                </ScrollView>
+
+                    <TouchableHighlight style={styles.bottomButton}>
+                        <Text>Your Response</Text>
+                    </TouchableHighlight>
+
+                    {/*<TextInput*/}
+                        {/*style={styles.textBox}*/}
+                        {/*onChangeText={(text) => {*/}
+                            {/*this.setState({text})*/}
+                        {/*}}*/}
+                        {/*value={this.state.text}*/}
+                        {/*multiline={true}*/}
+                        {/*numberOfLines={1000}*/}
+                    {/*/>*/}
+
+                </View>
             </View>
         )
     }
@@ -85,6 +92,15 @@ const styles = StyleSheet.create({
         width: '100%',
         marginBottom: 15,
         padding: 10,
-        borderRadius: 10
+        borderRadius: 10,
+        flex: 5
+    },
+    bottomButton: {
+        backgroundColor:'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        borderRadius: 10,
+        flex: 1
     }
 });
