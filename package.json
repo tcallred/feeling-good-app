@@ -17,7 +17,10 @@
     "expo": "29.0.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
-    "react-navigation": "^2.9.3"
+    "react-native-keyboard-spacer": "^0.4.1",
+    "react-native-linear-gradient": "^2.4.2",
+    "react-navigation": "^2.9.3",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "jest-expo": "29.0.0"

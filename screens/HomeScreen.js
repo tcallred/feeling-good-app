@@ -11,6 +11,7 @@ import {
     Button,
     Alert
 } from 'react-native';
+import {LinearGradient} from 'expo'
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
 import ThoughtCard from '../components/ThoughtCard'
 import NavBar from "../components/NavBar";
@@ -28,7 +29,8 @@ export default class HomeScreen extends React.Component {
 
     render() {
         return (
-            <View style={{backgroundColor:'#fad5d0', flex:1}}>
+            <View style={{flex: 1}}>
+
                 <NavBar leftTitle='Learn' leftButtonPress={() => {
                     Alert.alert('Pressed', 'ok');
                 }}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
-import { createSwitchNavigator } from 'react-navigation';
-import {AppLoading, Asset, Font, Icon} from 'expo';
+import {createSwitchNavigator} from 'react-navigation';
+import {AppLoading, Asset, Font, Icon, LinearGradient} from 'expo';
 import HomeScreen from "./screens/HomeScreen";
 import ThoughtScreen from "./screens/ThoughtScreen";
 import ThoughtsAndResponses from "./components/ThoughtsAndResponses"
@@ -31,7 +31,11 @@ export default class App extends React.Component {
                 />
             );
         } else {
-            return <RootSwitch/>
+            return (
+                <LinearGradient colors={['#fffde9', '#ffecec']} style={{flex: 1}}>
+                    <RootSwitch/>
+                </LinearGradient>
+            )
             // return (
             //     <View style={styles.container}>
             //         <StatusBar hidden={true}/>

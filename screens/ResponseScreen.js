@@ -25,7 +25,7 @@ export default class ResponseScreen extends React.Component {
     render() {
         let tr = ThoughtsAndResponses.getInstance();
         return (
-            <View>
+            <View style={{flex: 1}}>
                 <NavBar
                     leftTitle='Save'
                     leftButtonPress={() => {
