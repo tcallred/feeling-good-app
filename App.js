@@ -1,7 +1,7 @@
 import React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {createSwitchNavigator} from 'react-navigation';
-import {AppLoading, Asset, Font, Icon, LinearGradient} from 'expo';
+import {AppLoading, Asset, Font, Icon} from 'expo';
 import HomeScreen from "./screens/HomeScreen";
 import ThoughtScreen from "./screens/ThoughtScreen";
 import ThoughtsAndResponses from "./components/ThoughtsAndResponses"
@@ -16,8 +16,8 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         let tr = ThoughtsAndResponses.getInstance();
-        tr.addEntry('Oct 5, 2018 4:15', 'Lorem ipsum dolor sit amet');
-        tr.addEntry('Oct 3, 2018 4:26', 'Lorem ipsum dolor sit amet, consecutor blah blah');
+        tr.addEntry("20120620", 'Lorem ipsum dolor sit amet');
+        tr.addEntry("20111031", 'Lorem ipsum dolor sit amet, consecutor blah blah');
     }
 
 
@@ -32,9 +32,7 @@ export default class App extends React.Component {
             );
         } else {
             return (
-                <LinearGradient colors={['#fffde9', '#ffecec']} style={{flex: 1}}>
                     <RootSwitch/>
-                </LinearGradient>
             )
             // return (
             //     <View style={styles.container}>

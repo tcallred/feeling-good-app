@@ -11,10 +11,13 @@ import {
     Button,
     Alert
 } from 'react-native';
-import {LinearGradient} from 'expo'
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
 import ThoughtCard from '../components/ThoughtCard'
 import NavBar from "../components/NavBar";
+
+const cardSize = 120;
+const cardMargin = 10;
+const themeColor = '#f88379';
 
 export default class HomeScreen extends React.Component {
 
@@ -47,15 +50,15 @@ export default class HomeScreen extends React.Component {
                                     this.props.navigation.navigate('Response', {id: value.id})
                                 }
                                 }>
-                                    <ThoughtCard id={value.id} datetime={value.datetime}/>
+                                    <ThoughtCard id={value.id} datetime={value.datetime} text={value.thought}/>
                                 </TouchableOpacity>
                             })}
-                        <View style={styles.plusButton}>
-                            <Button title='New' style={styles.plusButton} onPress={() => {
-                                this.props.navigation.navigate('Thought')
-                            }}/>
-                        </View>
-
+                        <TouchableOpacity style={styles.plusButton} onPress={() => {
+                            this.props.navigation.navigate('Thought')
+                        }}>
+                            <Text style={styles.plusButtonText}>+</Text>
+                        </TouchableOpacity>
+                        <View style={styles.dummy}/>
                     </View>
                 </ScrollView>
             </View>
@@ -65,31 +68,43 @@ export default class HomeScreen extends React.Component {
 }
 
 
+
 const styles = StyleSheet.create({
     title: {
-        fontSize: 22
+        fontSize: 22,
+        fontWeight: 'bold'
     },
     subtitle: {
         fontSize: 12
     },
     outerContainer: {
-        margin: 15
+        padding: 15
     },
     thoughtsContainer: {
         flexWrap: 'wrap',
         marginTop: 20,
         flexDirection: 'row',
-        justifyContent: 'flex-start'
+        justifyContent: 'space-evenly'
     },
     plusButton: {
         // fontSize: 20,
-        height: 88,
-        width: 88,
-        margin: 15,
-        borderWidth: 2,
-        borderColor: '#333',
+        height: cardSize,
+        width: cardSize,
+        margin: cardMargin,
+        borderWidth: 1,
+        borderColor: themeColor,
         borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    plusButtonText: {
+        fontSize: 30,
+        color: themeColor
+    },
+    // Dummy exists to align plus button
+    dummy: {
+        height: cardSize,
+        width: cardSize,
+        margin: cardMargin
     }
 });

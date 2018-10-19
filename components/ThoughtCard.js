@@ -4,6 +4,11 @@ import {
     Text,
     StyleSheet
 } from 'react-native';
+import CardView from 'react-native-cardview'
+import moment from 'moment'
+
+const cardSize = 120;
+const cardMargin = 10;
 
 export default class ThoughtCard extends React.Component {
 
@@ -16,8 +21,10 @@ export default class ThoughtCard extends React.Component {
     render() {
         return (
             <View style={styles.cardContainer}>
-                <View style={styles.card}/>
-                <Text>{this.props.datetime}</Text>
+                <CardView cardElevation={2} cornerRadius={20} style={styles.card}>
+                    <Text style={styles.innerText}>{'   ' + this.props.text}</Text>
+                </CardView>
+                <Text style={{maxWidth: cardSize}}>{moment(this.props.datetime, 'YYYYMMDD').fromNow()}</Text>
             </View>
         );
     }
@@ -25,17 +32,22 @@ export default class ThoughtCard extends React.Component {
 }
 
 const styles = StyleSheet.create({
-   cardContainer: {
-       alignItems: 'flex-start',
-       margin: 15,
-   },
-   card: {
-       height: 88,
-       width: 88,
-       backgroundColor: 'white',
-       marginBottom: 5,
-       borderWidth: 2,
-       borderColor: '#333',
-       borderRadius: 20
-   }
+    cardContainer: {
+        alignItems: 'center',
+        margin: cardMargin,
+    },
+    card: {
+        height: cardSize,
+        width: cardSize,
+        backgroundColor: 'white'    ,
+        marginBottom: 5,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#d3d3d3',
+        // borderRadius: 20
+    },
+    innerText: {
+        color: '#cecece',
+        fontSize: 10
+    }
 });

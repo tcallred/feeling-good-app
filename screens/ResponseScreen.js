@@ -9,8 +9,10 @@ import {
     Alert,
     TouchableHighlight
 } from 'react-native';
+import KeyboardSpacer from 'react-native-keyboard-spacer'
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
 import NavBar from "../components/NavBar";
+import CardView from 'react-native-cardview'
 
 export default class ResponseScreen extends React.Component {
 
@@ -20,7 +22,11 @@ export default class ResponseScreen extends React.Component {
         const id = navigation.getParam('id', 'NO-ID');
 
         let tr = ThoughtsAndResponses.getInstance();
-        this.state = {text: tr.getResponseText(id), id: id};
+        this.state = {
+            text: tr.getResponseText(id),
+            id: id,
+            respOpen: false
+        };
     }
 
     render() {
@@ -46,7 +52,8 @@ export default class ResponseScreen extends React.Component {
                                     }
                                 },
                                 {
-                                    text: 'Not yet', onPress: () => {}
+                                    text: 'Not yet', onPress: () => {
+                                    }
                                 }
                             ]
                         )
@@ -54,25 +61,33 @@ export default class ResponseScreen extends React.Component {
                     }}/>
 
                 <View style={{padding: 15, flex: 1}}>
-                    <View style={styles.textShow}>
-                        <Text>
-                            {tr.getThoughtText(this.state.id)}
-                        </Text>
-                    </View>
+                    <CardView cardElevation={4} style={styles.textShow}>
+                        <ScrollView >
+                            <Text>
+                                {tr.getThoughtText(this.state.id)}
+                            </Text>
+                        </ScrollView>
+                    </CardView>
 
-                    <TouchableHighlight style={styles.bottomButton}>
+                    <TouchableHighlight onPress={() => this.setState({respOpen: true})} style={styles.bottomButton}>
                         <Text>Your Response</Text>
                     </TouchableHighlight>
 
-                    {/*<TextInput*/}
-                        {/*style={styles.textBox}*/}
-                        {/*onChangeText={(text) => {*/}
-                            {/*this.setState({text})*/}
-                        {/*}}*/}
-                        {/*value={this.state.text}*/}
-                        {/*multiline={true}*/}
-                        {/*numberOfLines={1000}*/}
-                    {/*/>*/}
+                    {this.state.respOpen && <CardView cardElevation={6} style={styles.textBox}>
+                        <TouchableHighlight onPress={() => this.setState({respOpen: false})}>
+                            <Text>Your Response</Text>
+                        </TouchableHighlight>
+                        <TextInput style={styles.textBoxInput}
+
+                                   onChangeText={(text) => {
+                                       this.setState({text: text})
+                                   }}
+                                   value={this.state.text}
+                                   multiline={true}
+                                   numberOfLines={1000}
+                        />
+                        <KeyboardSpacer/>
+                    </CardView>}
 
                 </View>
             </View>
@@ -81,26 +96,38 @@ export default class ResponseScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    textBox: {
-        backgroundColor: 'white',
-        height: 200,
-        width: '100%',
-        borderRadius: 10
-    },
     textShow: {
+        flex:1,
         backgroundColor: 'white',
         width: '100%',
         marginBottom: 15,
         padding: 10,
         borderRadius: 10,
-        flex: 5
+        opacity: 0.5,
+        borderWidth: 1,
+        borderColor: '#d3d3d3',
+    },
+    textBox: {
+        backgroundColor: 'white',
+        borderRadius: 10,
+        position: 'absolute',
+        bottom: 0,
+        right: 10,
+        left: 10,
+        top: 75,
+        borderWidth: 1,
+        borderColor: '#d3d3d3',
+    },
+    textBoxInput: {
+        flex: 1,
+        color: 'grey'
     },
     bottomButton: {
-        backgroundColor:'white',
+        backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
         borderRadius: 10,
-        flex: 1
+
     }
 });
