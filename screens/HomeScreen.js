@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
 import ThoughtCard from '../components/ThoughtCard'
-import NavBar from "../components/NavBar";
+import TextBar from '../components/TextBar'
 import c from "../constants/Constants";
 
 
@@ -32,13 +32,10 @@ export default class HomeScreen extends React.Component {
         return (
             <View style={{flex: 1}}>
 
-                <NavBar leftTitle='   ' leftButtonPress={() => {}}
-                        rightTitle='   ' rightButtonPress={() => {
-                    Alert.alert('Pressed settings', 'ok')
-                }}/>
+                <TextBar text={'Recorded thoughts'}/>
                 <ScrollView style={styles.outerContainer}>
-                    <Text style={styles.title}>Recorded thoughts</Text>
-                    <Text style={styles.subtitle}>Respond to these at any time</Text>
+                    {/*<Text style={styles.title}>Recorded thoughts</Text>*/}
+                    {/*<Text style={styles.subtitle}>Respond to these at any time</Text>*/}
                     <View style={styles.thoughtsContainer}>
                         {
                             this.state.tr.getList().map((value) => {
@@ -66,19 +63,14 @@ export default class HomeScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 22,
-        fontWeight: 'bold'
-    },
-    subtitle: {
-        fontSize: 12
-    },
+
     outerContainer: {
-        padding: 15
+        padding: 15,
+        paddingTop: 10
     },
     thoughtsContainer: {
         flexWrap: 'wrap',
-        marginTop: 20,
+        marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-evenly'
     },
@@ -94,7 +86,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     plusButtonText: {
-        fontSize: 30,
+        fontSize: 36,
         color: c.themeColor
     },
     // Dummy exists to align plus button

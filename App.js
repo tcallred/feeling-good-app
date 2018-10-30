@@ -15,9 +15,6 @@ export default class App extends React.Component {
 
     constructor(props) {
         super(props);
-        let tr = ThoughtsAndResponses.getInstance();
-        tr.addEntry("20120620", 'Lorem ipsum dolor sit amet');
-        tr.addEntry("20111031", 'Lorem ipsum dolor sit amet, consecutor blah blah');
     }
 
 

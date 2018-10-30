@@ -75,32 +75,35 @@ export default class ResponseScreen extends React.Component {
             return true;
         },
         onPanResponderMove: (evt, gestureState) => {
-            let moveTo = gestureState.moveY - 65;
+            let moveTo = (gestureState.moveY - 65) ;
             if (moveTo < 0) moveTo = 0;
             if (gestureState.moveY >= height / 3) {
                 Keyboard.dismiss();
             }
-            this._animatedValue.setValue(moveTo);
+            this._animatedValue.setValue(moveTo - 45);
         },
         onPanResponderTerminationRequest: (evt, gestureState) => true,
         onPanResponderRelease: (evt, gestureState) => {
             // console.warn("Delta:", gestureState.dy);
             // console.warn("Orig:", gestureState.y0);
-            if (gestureState.dy >= 100 && gestureState.y0 < height / 2 ||
-            gestureState.dy < 100 && gestureState.dy > -100 && gestureState.y0 > height / 2) {
+            // if (gestureState.dy >= 100 && gestureState.y0 < height / 2 ||
+            // gestureState.dy < 100 && gestureState.dy > -100 && gestureState.y0 > height / 2)
+            if (gestureState.vy > 0){
                 // To Bottom of the screen
+                Keyboard.dismiss();
                 Animated.spring(this._animatedValue, {
-                    toValue: height - 120,
+                    toValue: height - 165,
                     // duration: 250,
                     bounciness: 8
 
                 }).start();
             }
-            if (gestureState.dy <= -100 && gestureState.y0 > height / 2 ||
-            gestureState.dy > -100 && gestureState.dy < 100 && gestureState.y0 < height / 2){
+            // if (gestureState.dy <= -100 && gestureState.y0 > height / 2 ||
+            // gestureState.dy > -100 && gestureState.dy < 100 && gestureState.y0 < height / 2)
+            else if (gestureState.vy <= 0) {
                 // To top
                 Animated.spring(this._animatedValue, {
-                    toValue: 45,
+                    toValue: 0,
                     // duration: 250,
                     bounciness: 8
 
@@ -111,7 +114,7 @@ export default class ResponseScreen extends React.Component {
         onPanResponderTerminate: (evt, gestureState) => {},
     });
 
-    _animatedValue = new Animated.Value(45);
+    _animatedValue = new Animated.Value(0);
 
     _opacityValue = new Animated.Value(1);
 
@@ -145,15 +148,23 @@ export default class ResponseScreen extends React.Component {
 
                     <CardView cardElevation={4} style={styles.responseCard}>
                         <View style={styles.headingArea}>
+                            <View style={{width: 15, height:10}}/>
                             <Text>Your response:</Text>
-                            <Button title={'Edit'} color={c.themeColor} onPress={() => {
+                            <TouchableOpacity onPress={() => {
                                 this.setState({mode: 'editing'}, () => {
-                                    this._animatedValue.setValue(45);
+                                    this._animatedValue.setValue(height - 165);
+                                    Animated.spring(this._animatedValue, {
+                                        toValue: 0,
+                                        bounciness: 8
+
+                                    }).start();
                                     this.textRef2.current.focus();
                                 });
 
 
-                            }}/>
+                            }}>
+                                <Text style={{color:c.themeColor, fontSize: 20}}>Edit</Text>
+                            </TouchableOpacity>
                         </View>
                         {this.state.text === '' &&
                         <Text style={{color: '#cecece', fontStyle: 'italic'}}>No response yet.</Text>}
@@ -166,9 +177,18 @@ export default class ResponseScreen extends React.Component {
 
                     }
 
+                    {this.state.mode === 'editing' && <View style={styles.spacer}/>}
+
+
 
                     {this.state.mode === 'editing' &&
                     <Animated.View style={{position: 'absolute', right: 10, left: 10, top: this._animatedValue}}>
+                        <View {...this._panResponder.panHandlers} style={
+
+                            {
+                                height:45
+                            }
+                        }/>
                         <CardView cardElevation={6} style={styles.editingResponse}>
                             <View {...this._panResponder.panHandlers} style={
                                 [styles.headingArea, {
@@ -257,12 +277,9 @@ const styles = StyleSheet.create({
     textBoxInput: {
         flex: 1
     },
-    bottomButton: {
-        backgroundColor: 'white',
-        justifyContent: 'center',
-        alignItems: 'center',
+    spacer: {
         width: '100%',
-        borderRadius: 10,
+        height: 50
+    },
 
-    }
 });

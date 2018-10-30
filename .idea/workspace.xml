@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec70634e-050e-4822-a2cd-8e3ed20495f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/constants/Constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ThoughtCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/ThoughtCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/Colors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/Layout.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/TextBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/ResponseScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ResponseScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ThoughtScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ThoughtScreen.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,15 +28,15 @@
           <entry key="project.closed" value="25" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="3" />
-          <entry key="project.open.time.5" value="10" />
+          <entry key="project.open.time.5" value="11" />
           <entry key="project.open.time.6" value="10" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="js" value="49" />
+          <entry key="js" value="50" />
           <entry key="json" value="3" />
           <entry key="txt" value="1" />
         </counts>
@@ -47,19 +44,19 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="49" />
+          <entry key="JavaScript" value="50" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="12082" />
+          <entry key="js" value="12819" />
           <entry key="txt" value="600" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="12082" />
+          <entry key="JavaScript" value="12819" />
           <entry key="PLAIN_TEXT" value="600" />
         </counts>
       </usages-collector>
@@ -76,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-626">
-              <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
+            <state relative-caret-position="1760">
+              <caret line="88" column="20" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -97,7 +94,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/screens/ThoughtScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
+            <state relative-caret-position="220">
               <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="37" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -109,12 +106,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/screens/ResponseScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="55" column="34" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+            <state relative-caret-position="462">
+              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#1382#1398#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/TextBar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -122,7 +127,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/NavBar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
+            <state relative-caret-position="180">
               <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -134,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/ThoughtCard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="694">
+            <state relative-caret-position="641">
               <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="24" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -146,8 +151,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+            <state relative-caret-position="320">
+              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -187,13 +195,14 @@
         <option value="$PROJECT_DIR$/tasksForTesters.txt" />
         <option value="$PROJECT_DIR$/components/ThoughtsAndResponses.js" />
         <option value="$PROJECT_DIR$/components/Question.js" />
-        <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/constants/Colors.js" />
         <option value="$PROJECT_DIR$/components/ThoughtCard.js" />
-        <option value="$PROJECT_DIR$/screens/HomeScreen.js" />
         <option value="$PROJECT_DIR$/components/NavBar.js" />
         <option value="$PROJECT_DIR$/constants/Constants.js" />
         <option value="$PROJECT_DIR$/screens/ThoughtScreen.js" />
+        <option value="$PROJECT_DIR$/components/TextBar.js" />
+        <option value="$PROJECT_DIR$/screens/HomeScreen.js" />
+        <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/screens/ResponseScreen.js" />
       </list>
     </option>
@@ -215,7 +224,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="154" />
+    <option name="x" value="80" />
     <option name="y" value="-8" />
     <option name="width" value="1750" />
     <option name="height" value="969" />
@@ -234,6 +243,11 @@
               <item name="expo_prodj" type="b2602c69:ProjectViewProjectNode" />
               <item name="expo_prodj" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="expo_prodj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="expo_prodj" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -247,6 +261,11 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\taylo\WebstormProjects\expo_prodj\components" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -333,6 +352,7 @@
       <workItem from="1540350713540" duration="4590000" />
       <workItem from="1540570908617" duration="687000" />
       <workItem from="1540677479985" duration="20324000" />
+      <workItem from="1540911683337" duration="5647000" />
     </task>
     <task id="LOCAL-00001" summary="Starting blank">
       <created>1539097949199</created>
@@ -394,7 +414,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97557000" />
+    <option name="totallyTimeSpent" value="103204000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -409,7 +429,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931413" weight="0.24179432" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931413" visible="true" weight="0.24147122" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5006859" side_tool="true" weight="0.24973656" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -518,10 +538,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/react-native/react-native-implementation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/ThoughtsAndResponses.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
           <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/ThoughtScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/NavBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -532,54 +579,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App.js">
+    <entry file="file://$PROJECT_DIR$/components/TextBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+        <state relative-caret-position="280">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/ThoughtCard.js">
+    <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="24" />
+        <state relative-caret-position="320">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/react-native/react-native-implementation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-626">
-          <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
+        <state relative-caret-position="1760">
+          <caret line="88" column="20" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/NavBar.js">
+    <entry file="file://$PROJECT_DIR$/components/ThoughtCard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/screens/ThoughtScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="37" />
+        <state relative-caret-position="641">
+          <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="24" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -588,11 +618,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/screens/ResponseScreen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="55" column="34" selection-start-line="55" selection-start-column="34" selection-end-line="55" selection-end-column="34" />
+        <state relative-caret-position="462">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#1382#1398#0" />
           </folding>
         </state>
       </provider>
