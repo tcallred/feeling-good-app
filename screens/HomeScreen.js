@@ -14,10 +14,8 @@ import {
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
 import ThoughtCard from '../components/ThoughtCard'
 import NavBar from "../components/NavBar";
+import c from "../constants/Constants";
 
-const cardSize = 120;
-const cardMargin = 10;
-const themeColor = '#f88379';
 
 export default class HomeScreen extends React.Component {
 
@@ -34,10 +32,8 @@ export default class HomeScreen extends React.Component {
         return (
             <View style={{flex: 1}}>
 
-                <NavBar leftTitle='Learn' leftButtonPress={() => {
-                    Alert.alert('Pressed', 'ok');
-                }}
-                        rightTitle='Settings' rightButtonPress={() => {
+                <NavBar leftTitle='   ' leftButtonPress={() => {}}
+                        rightTitle='   ' rightButtonPress={() => {
                     Alert.alert('Pressed settings', 'ok')
                 }}/>
                 <ScrollView style={styles.outerContainer}>
@@ -88,23 +84,23 @@ const styles = StyleSheet.create({
     },
     plusButton: {
         // fontSize: 20,
-        height: cardSize,
-        width: cardSize,
-        margin: cardMargin,
+        height: c.cardSize,
+        width: c.cardSize,
+        margin: c.cardMargin,
         borderWidth: 1,
-        borderColor: themeColor,
+        borderColor: c.themeColor,
         borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center'
     },
     plusButtonText: {
         fontSize: 30,
-        color: themeColor
+        color: c.themeColor
     },
     // Dummy exists to align plus button
     dummy: {
-        height: cardSize,
-        width: cardSize,
-        margin: cardMargin
+        height: c.cardSize,
+        width: c.cardSize,
+        margin: c.cardMargin
     }
 });

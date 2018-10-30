@@ -6,7 +6,7 @@ import {
     Button
 } from 'react-native';
 
-const themeColor = '#f88379';
+import c from "../constants/Constants";
 
 export default class NavBar extends React.Component {
 
@@ -14,8 +14,8 @@ export default class NavBar extends React.Component {
     render(){
         return (
             <View style={styles.bar}>
-                <Button color={themeColor} title={this.props.leftTitle} onPress={this.props.leftButtonPress}/>
-                <Button color={themeColor} title={this.props.rightTitle} onPress={this.props.rightButtonPress}/>
+                <Button color={this.props.leftColor} title={this.props.leftTitle} onPress={this.props.leftButtonPress}/>
+                <Button color={this.props.rightColor} title={this.props.rightTitle} onPress={this.props.rightButtonPress}/>
             </View>
         )
     }
@@ -38,3 +38,12 @@ const styles = StyleSheet.create({
         borderBottomColor: '#d3d3d3'
     },
 });
+
+NavBar.defaultProps = {
+    leftColor: c.themeColor,
+    rightColor: c.themeColor,
+    leftTitle: '',
+    rightTitle: '',
+    leftButtonPress: ()=>{},
+    rightButtonPress: ()=>{}
+}

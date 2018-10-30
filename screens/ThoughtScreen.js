@@ -14,6 +14,7 @@ import ThoughtsAndResponses from "../components/ThoughtsAndResponses";
 import NavBar from "../components/NavBar";
 import CardView from 'react-native-cardview'
 import moment from 'moment'
+import c from "../constants/Constants";
 
 export default class ThoughtScreen extends React.Component {
 
@@ -21,6 +22,11 @@ export default class ThoughtScreen extends React.Component {
         text: ''
     };
 
+    textRef = React.createRef();
+
+    componentDidMount(){
+        this.textRef.current.focus();
+    }
 
     render() {
         return (
@@ -42,7 +48,8 @@ export default class ThoughtScreen extends React.Component {
                         <Text style={styles.title}>Your thoughts</Text>
                         <CardView cardElevation={5} style={styles.textCard}>
                             <TextInput
-                                style={styles.textBox}
+                                ref = {this.textRef}
+                                style={styles.editingResponse}
                                 onChangeText={(text) => {
                                     this.setState({text})
                                 }}
@@ -68,9 +75,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         borderWidth: 1,
-        borderColor: '#d3d3d3',
+        borderColor: c.themeColor,
     },
-    textBox: {
+    editingResponse: {
         flex: 1,
         width: '100%',
 

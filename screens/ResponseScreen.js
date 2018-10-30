@@ -7,12 +7,19 @@ import {
     Text,
     ScrollView,
     Alert,
-    TouchableHighlight
+    TouchableOpacity,
+    PanResponder,
+    Animated,
+    Dimensions,
+    Keyboard
 } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer'
 import ThoughtsAndResponses from "../components/ThoughtsAndResponses"
 import NavBar from "../components/NavBar";
-import CardView from 'react-native-cardview'
+import CardView from 'react-native-cardview';
+import c from "../constants/Constants";
+
+const {height} = Dimensions.get('window');
 
 export default class ResponseScreen extends React.Component {
 
@@ -25,102 +32,230 @@ export default class ResponseScreen extends React.Component {
         this.state = {
             text: tr.getResponseText(id),
             id: id,
-            respOpen: false
+            mode: 'viewing'
         };
-    }
+    };
+
+    textRef2 = React.createRef();
+
+    resolve = () => {
+        let tr = ThoughtsAndResponses.getInstance();
+        Alert.alert(
+            'Resolved?',
+            'Are you satisfied with this thought and ready to delete it?',
+            [
+                {
+                    text: 'Yes', onPress: () => {
+                        Animated.timing(this._opacityValue, {
+                            toValue: 0,
+                            duration: 350,
+                        }).start(()=>{
+                            setTimeout(()=>{
+                                tr.removeEntry(this.state.id);
+                                this.props.navigation.navigate('Home');
+                            }, 350);
+                        });
+
+                    }
+                },
+                {
+                    text: 'Not yet', onPress: () => {
+                    }
+                }
+            ]
+        )
+    };
+
+    toViewingMode = () => {
+        this.setState({mode: 'viewing'});
+    };
+
+    _panResponder = PanResponder.create({
+        onMoveShouldSetPanResponder: (evt, gestureState) => {
+            return true;
+        },
+        onPanResponderMove: (evt, gestureState) => {
+            let moveTo = gestureState.moveY - 65;
+            if (moveTo < 0) moveTo = 0;
+            if (gestureState.moveY >= height / 3) {
+                Keyboard.dismiss();
+            }
+            this._animatedValue.setValue(moveTo);
+        },
+        onPanResponderTerminationRequest: (evt, gestureState) => true,
+        onPanResponderRelease: (evt, gestureState) => {
+            // console.warn("Delta:", gestureState.dy);
+            // console.warn("Orig:", gestureState.y0);
+            if (gestureState.dy >= 100 && gestureState.y0 < height / 2 ||
+            gestureState.dy < 100 && gestureState.dy > -100 && gestureState.y0 > height / 2) {
+                // To Bottom of the screen
+                Animated.spring(this._animatedValue, {
+                    toValue: height - 120,
+                    // duration: 250,
+                    bounciness: 8
+
+                }).start();
+            }
+            if (gestureState.dy <= -100 && gestureState.y0 > height / 2 ||
+            gestureState.dy > -100 && gestureState.dy < 100 && gestureState.y0 < height / 2){
+                // To top
+                Animated.spring(this._animatedValue, {
+                    toValue: 45,
+                    // duration: 250,
+                    bounciness: 8
+
+                }).start();
+                this.textRef2.current.focus();
+            }
+        },
+        onPanResponderTerminate: (evt, gestureState) => {},
+    });
+
+    _animatedValue = new Animated.Value(45);
+
+    _opacityValue = new Animated.Value(1);
 
     render() {
         let tr = ThoughtsAndResponses.getInstance();
         return (
             <View style={{flex: 1}}>
                 <NavBar
-                    leftTitle='Save'
+                    leftTitle= {this.state.mode === 'viewing' ? 'Save' : ''}
                     leftButtonPress={() => {
                         tr.setResponse(this.state.id, this.state.text);
                         this.props.navigation.navigate('Home');
                     }}
-                    rightTitle='Finish'
-                    rightButtonPress={() => {
-                        Alert.alert(
-                            'Finished?',
-                            'Are you satisfied with this thought?',
-                            [
-                                {
-                                    text: 'Yes', onPress: () => {
-                                        tr.removeEntry(this.state.id);
-                                        this.props.navigation.navigate('Home');
-                                    }
-                                },
-                                {
-                                    text: 'Not yet', onPress: () => {
-                                    }
-                                }
-                            ]
-                        )
+                    rightTitle={this.state.mode === 'viewing' ? 'Resolve' : 'Done'}
+                    rightColor={this.state.mode === 'viewing' ? c.secondaryColor : c.themeColor}
+                    rightButtonPress={this.state.mode === 'viewing' ? this.resolve : this.toViewingMode}/>
 
-                    }}/>
-
-                <View style={{padding: 15, flex: 1}}>
-                    <CardView cardElevation={4} style={styles.textShow}>
-                        <ScrollView >
+                <Animated.View style={{padding: 10, flex: 1, justifyContent: 'space-between', opacity: this._opacityValue}}>
+                    <CardView cardElevation={4} style={styles.thoughtCard}>
+                        <View style={styles.headingArea}>
+                            <Text>Your thought:</Text>
+                        </View>
+                        <ScrollView style={{paddingTop: 4}}>
                             <Text>
                                 {tr.getThoughtText(this.state.id)}
                             </Text>
                         </ScrollView>
                     </CardView>
 
-                    <TouchableHighlight onPress={() => this.setState({respOpen: true})} style={styles.bottomButton}>
-                        <Text>Your Response</Text>
-                    </TouchableHighlight>
+                    {this.state.mode === 'viewing' &&
 
-                    {this.state.respOpen && <CardView cardElevation={6} style={styles.textBox}>
-                        <TouchableHighlight onPress={() => this.setState({respOpen: false})}>
-                            <Text>Your Response</Text>
-                        </TouchableHighlight>
-                        <TextInput style={styles.textBoxInput}
+                    <CardView cardElevation={4} style={styles.responseCard}>
+                        <View style={styles.headingArea}>
+                            <Text>Your response:</Text>
+                            <Button title={'Edit'} color={c.themeColor} onPress={() => {
+                                this.setState({mode: 'editing'}, () => {
+                                    this._animatedValue.setValue(45);
+                                    this.textRef2.current.focus();
+                                });
 
-                                   onChangeText={(text) => {
-                                       this.setState({text: text})
-                                   }}
-                                   value={this.state.text}
-                                   multiline={true}
-                                   numberOfLines={1000}
-                        />
-                        <KeyboardSpacer/>
-                    </CardView>}
 
-                </View>
+                            }}/>
+                        </View>
+                        {this.state.text === '' &&
+                        <Text style={{color: '#cecece', fontStyle: 'italic'}}>No response yet.</Text>}
+                        <ScrollView style={{paddingTop: 4}}>
+                            <Text>
+                                {this.state.text}
+                            </Text>
+                        </ScrollView>
+                    </CardView>
+
+                    }
+
+
+                    {this.state.mode === 'editing' &&
+                    <Animated.View style={{position: 'absolute', right: 10, left: 10, top: this._animatedValue}}>
+                        <CardView cardElevation={6} style={styles.editingResponse}>
+                            <View {...this._panResponder.panHandlers} style={
+                                [styles.headingArea, {
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }]
+                            }>
+                                <View style={styles.dragLine}/>
+                                <Text>Your response: </Text>
+                            </View>
+                            <TextInput
+                                style={styles.textBoxInput}
+                                ref={this.textRef2}
+                                onChangeText={(text) => {
+                                    this.setState({text: text})
+                                }}
+                                value={this.state.text}
+                                multiline={true}
+                                numberOfLines={1000}
+                            />
+                            <KeyboardSpacer/>
+                        </CardView>
+                    </Animated.View>
+                    }
+
+                </Animated.View>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    textShow: {
-        flex:1,
+    thoughtCard: {
+        flex: 1,
         backgroundColor: 'white',
         width: '100%',
-        marginBottom: 15,
+        marginTop: 5,
+        marginBottom: 5,
         padding: 10,
         borderRadius: 10,
-        opacity: 0.5,
         borderWidth: 1,
-        borderColor: '#d3d3d3',
+        borderColor: c.themeColor,
     },
-    textBox: {
+    responseCard: {
+        flex: 1,
+        backgroundColor: 'white',
+        width: '100%',
+        marginTop: 5,
+        marginBottom: 5,
+        padding: 10,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: c.secondaryColor,
+    },
+    headingArea: {
+        width: '100%',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        flexWrap: 'nowrap',
+        flexDirection: 'row',
+        paddingBottom: 8,
+        borderBottomWidth: 1,
+        borderBottomColor: '#e7e7e7'
+
+    },
+    editingResponse: {
         backgroundColor: 'white',
         borderRadius: 10,
-        position: 'absolute',
-        bottom: 0,
-        right: 10,
-        left: 10,
-        top: 75,
+        padding: 10,
+        // position: 'absolute',
+        height: 465,
+        // right: 10,
+        // left: 10,
+        // top: 30,
         borderWidth: 1,
-        borderColor: '#d3d3d3',
+        borderColor: c.secondaryColor,
+    },
+    dragLine: {
+        backgroundColor: '#d0d0d0',
+        height: 5,
+        width: 60,
+        borderRadius: 10,
+        marginBottom: 5
     },
     textBoxInput: {
-        flex: 1,
-        color: 'grey'
+        flex: 1
     },
     bottomButton: {
         backgroundColor: 'white',

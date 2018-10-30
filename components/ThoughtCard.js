@@ -6,9 +6,7 @@ import {
 } from 'react-native';
 import CardView from 'react-native-cardview'
 import moment from 'moment'
-
-const cardSize = 120;
-const cardMargin = 10;
+import c from "../constants/Constants";
 
 export default class ThoughtCard extends React.Component {
 
@@ -24,7 +22,7 @@ export default class ThoughtCard extends React.Component {
                 <CardView cardElevation={2} cornerRadius={20} style={styles.card}>
                     <Text style={styles.innerText}>{'   ' + this.props.text}</Text>
                 </CardView>
-                <Text style={{maxWidth: cardSize}}>{moment(this.props.datetime, 'YYYYMMDD').fromNow()}</Text>
+                <Text style={{maxWidth: c.cardSize}}>{moment(this.props.datetime, 'YYYYMMDD').fromNow()}</Text>
             </View>
         );
     }
@@ -34,16 +32,16 @@ export default class ThoughtCard extends React.Component {
 const styles = StyleSheet.create({
     cardContainer: {
         alignItems: 'center',
-        margin: cardMargin,
+        margin: c.cardMargin,
     },
     card: {
-        height: cardSize,
-        width: cardSize,
+        height: c.cardSize,
+        width: c.cardSize,
         backgroundColor: 'white'    ,
         marginBottom: 5,
         padding: 10,
         borderWidth: 1,
-        borderColor: '#d3d3d3',
+        borderColor: c.themeColor,
         // borderRadius: 20
     },
     innerText: {
